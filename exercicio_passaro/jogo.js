@@ -24,6 +24,7 @@ const x_max = h; // X do ponto máximo
 const y_max = k; // Y do ponto máximo
 const velocidade = 5; // Velocidade do movimento horizontal
 
+// Carregando os arquivos
 function preload(){
     this.load.image('bg','assets/bg_space.png');
     this.load.spritesheet('passaro1', 'assets/bird-green.png', {frameWidth: 75, frameHeight: 75});
@@ -54,7 +55,7 @@ function create() {
 }
 
 function update(){
-    // Atualiza o movimento do pássaro (FORA do loop)
+    // Atualiza o movimento do pássaro
     if (indoParaDireita) {
         tempo += velocidade;
     } else {
@@ -64,6 +65,7 @@ function update(){
     passaro.x = 100 + tempo;
     passaro.y = A * Math.pow((passaro.x - h), 2) + k;
 
+    // Início do While para viabilização do contador (quantas vezes o passáro passou no PY Max da parábola)
     // Enquanto o pássaro estiver muito próximo do ponto máximo, contamos
     while (Math.abs(passaro.x - x_max) < 2 && Math.abs(passaro.y - y_max) < 2) {
         contadorPontoMaximo++;
